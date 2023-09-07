@@ -1,0 +1,65 @@
+Index: static/script.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/static/script.js b/static/script.js
+--- a/static/script.js	
++++ b/static/script.js	(date 1693972735146)
+@@ -1,10 +1,26 @@
+ $(function() {
+-    var drugList = [];
++    // Initialize drug list
++    let drugList = [];
+ 
++    // Function to add a drug to the list with a remove button
+     function addDrugToList(drug) {
+         drugList.push(drug);
+-        $("#drug-list").append("<li>" + drug + "</li>");
++        var listItem = $("<li>" + drug + " <button class='remove-btn'>X</button></li>");
++        $("#drug-list").append(listItem);
+         $("#drugs").val("");
++
++        // Event listener for the remove button within this list item
++        listItem.find(".remove-btn").on("click", function() {
++            var drugToRemove = $(this).parent().text().trim(); // Get the drug text
++            var index = drugList.indexOf(drugToRemove);
++            if (index > -1) {
++                drugList.splice(index, 1); // Remove the drug from the array
++            }
++            $(this).parent().remove(); // Remove the list item
++
++            // Add this line to remove the results when a drug is removed
++            $("#results").empty();
++        });
+     }
+ 
+     var drugsAutocomplete = $("#drugs").autocomplete({
+@@ -39,8 +55,9 @@
+         }
+     });
+ 
++    // Event listener for clearing the drug list
+     $("#clear").click(function() {
+-        drugList = [];
++        drugList = []; // Reset the drug list to an empty array
+         $("#drug-list").empty();
+         // Clear the results div using .empty()
+         $("#results").empty();
+@@ -72,3 +89,16 @@
+         });
+     });
+ });
++
++// Initialize the drug list on page load
++$(document).ready(function() {
++    displayDrugList();
++});
++
++// Function to display the drug list
++function displayDrugList() {
++    $("#drug-list").empty();
++    drugList.forEach((drug, index) => {
++        $("#drug-list").append(`<li>${drug}<button onclick="removeDrug(${index})">X</button></li>`);
++    });
++}

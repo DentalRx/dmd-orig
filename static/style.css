@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+h3 {
+    font-size: 22pt;
+}
+
+p {
+    font-size: 14pt;
+}
+
+#analyze, #clear {
+    border-radius: 100px !important;
+    border: 2px solid transparent !important;
+}
+
+#analyze {
+    background-color: #24B9D5 !important;
+    color: white !important;
+}
+
+#analyze:hover {
+    background-color: transparent !important;
+    color: #324A6D !important;
+    border-color: #324A6D !important;
+}
+
+#clear {
+    background-color: #7F7F7F !important; /* Changed to darker grey */
+    color: white !important;
+}
+
+#clear:hover {
+    background-color: transparent !important;
+    color: #7F7F7F !important; /* Changed to darker grey */
+    border-color: #7F7F7F !important; /* Changed to darker grey */
+}
+
+.container {
+    padding-bottom: 20px; /* Add spacing at the bottom of the container */
+}
+
+.form-group {
+    margin-bottom: 20px; /* Add spacing between the buttons and the drug list */
+}
+
+.buttons {
+    margin-bottom: 30px; /* Add spacing between the buttons and the first H3 text */
+}
+
+/* Style for remove-btn */
+.remove-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #5B748F;
+    color: white;
+    cursor: pointer;
+    font-size: 12px;  /* Adjusted font size */
+}
+
+.remove-btn:hover {
+    background-color: #F87575;
+}
